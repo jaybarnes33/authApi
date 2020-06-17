@@ -7,7 +7,5 @@ const errorResponse = require("../utils/errorResponse");
 //@access Public
 
 exports.register = asyncHandler(async (req, res, next) => {
-  res.status(200).json({
-    success: true
-  });
+res.status(400).json({success:false});
 });
