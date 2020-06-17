@@ -1,4 +1,4 @@
-const user = require('../models/user');
+const User = require('../models/User');
 const asyncHandler = require("../middleware/async");
 const errorResponse = require("../utils/errorResponse");
 
@@ -7,5 +7,13 @@ const errorResponse = require("../utils/errorResponse");
 //@access Public
 
 exports.register = asyncHandler(async (req, res, next) => {
-res.status(400).json({success:false});
+const { name,email,password,role } = req.body;
+
+const user =  await User.create({
+  name,
+  email,
+  password,
+  role
+});
+res.status(200).json({success:true});
 });
